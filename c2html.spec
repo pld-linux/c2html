@@ -10,7 +10,9 @@ Source0:	http://user.cs.tu-berlin.de/~schintke/x2html/%{name}-%{version}.tar.gz
 # Source0-md5:	324cd6c50dd611607e3366840bbc61f2
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://user.cs.tu-berlin.de/~schintke/x2html/index.html
-BuildRequires:	flex, autoconf
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	flex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,14 +39,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# to aviod "warning: found installed files not placed in any package: blabla
-rm -f $RPM_BUILD_ROOT/usr/doc/c2html/{AUTHORS,COPYING,NEWS,README,c2html.lsm}
+# to avoid "warning: found installed files not placed in any package: blabla"
+rm -rf $RPM_BUILD_ROOT/usr/doc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README c2html.lsm
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
