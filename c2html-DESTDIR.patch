@@ -1,0 +1,56 @@
+--- Makefile.in.old	Wed Oct 30 15:53:29 2002
++++ Makefile.in	Sat Oct  4 17:41:15 2003
+@@ -18,6 +18,8 @@
+ 
+ SHELL = /bin/sh
+ 
++DESTDIR = 
++
+ .SUFFIXES:
+ # If COMPRESSION is not zero the executable will also work as
+ # a CGI-script. The number you specify will be passed to gzip
+@@ -71,28 +73,28 @@
+ 	$(LEX) $(LEXSRCS)
+ 
+ install: $(TARGET) install-doc
+-	@echo "Installing" $(TARGET) "to" $(bindir)
+-	-mkdir -p $(bindir)
+-	$(INSTALL_PROGRAM) $(TARGET) $(bindir)/$(TARGET)
++	@echo "Installing" $(TARGET) "to" $(DESTDIR)$(bindir)
++	install -d $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) $(TARGET) $(DESTDIR)$(bindir)/$(TARGET)
+ 
+ install-strip: $(TARGET) install-doc
+-	@echo "Installing" $(TARGET) "to" $(bindir)
+-	-mkdir -p $(bindir)
+-	$(INSTALL_PROGRAM) -s $(TARGET) $(bindir)/$(TARGET)
++	@echo "Installing" $(TARGET) "to" $(DESTDIR)$(bindir)
++	install -d $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) -s $(TARGET) $(DESTDIR)$(bindir)/$(TARGET)
+ 
+ install-doc: 
+-	-mkdir -p $(man1dir) $(docdir)
+-	$(INSTALL_DATA) $(srcdir)/$(MANPAGE) $(man1dir)/$(MANPAGE)
+-	$(INSTALL_DATA) $(srcdir)/AUTHORS $(docdir)/AUTHORS
+-	$(INSTALL_DATA) $(srcdir)/COPYING $(docdir)/COPYING
+-	$(INSTALL_DATA) $(srcdir)/NEWS $(docdir)/NEWS
+-	$(INSTALL_DATA) $(srcdir)/README $(docdir)/README
+-	$(INSTALL_DATA) $(srcdir)/$(LSM) $(docdir)/$(LSM)
++	install -d $(DESTDIR){$(man1dir),$(docdir)}
++	$(INSTALL_DATA) $(srcdir)/$(MANPAGE) $(DESTDIR)$(man1dir)/$(MANPAGE)
++	$(INSTALL_DATA) $(srcdir)/AUTHORS $(DESTDIR)$(docdir)/AUTHORS
++	$(INSTALL_DATA) $(srcdir)/COPYING $(DESTDIR)$(docdir)/COPYING
++	$(INSTALL_DATA) $(srcdir)/NEWS $(DESTDIR)$(docdir)/NEWS
++	$(INSTALL_DATA) $(srcdir)/README $(DESTDIR)$(docdir)/README
++	$(INSTALL_DATA) $(srcdir)/$(LSM) $(DESTDIR)$(docdir)/$(LSM)
+ 
+ uninstall:
+-	rm -f $(bindir)/$(TARGET)
+-	rm -f $(man1dir)/$(MANPAGE)
+-	rm -rf $(docdir)
++	rm -f $(DESTDIR)$(bindir)/$(TARGET)
++	rm -f $(DESTDIR)$(man1dir)/$(MANPAGE)
++	rm -rf $(DESTDIR)$(docdir)
+ 
+ clean:
+ 	rm -rf *.o *~ $(LEXOUTPUT) TAGS
