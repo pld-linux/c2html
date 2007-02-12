@@ -1,5 +1,5 @@
 Summary:	C2html - converts C files to HTML
-Summary(pl.UTF-8):   C2html - konwerter źródeł C do HTML
+Summary(pl.UTF-8):	C2html - konwerter źródeł C do HTML
 Name:		c2html
 Version:	0.9.5
 Release:	1
