@@ -1,5 +1,5 @@
 Summary:	C2html - converts C files to HTML
-Summary(pl):	C2html - konwerter ºrÛde≥ C do HTML
+Summary(pl.UTF-8):   C2html - konwerter ≈∫r√≥de≈Ç C do HTML
 Name:		c2html
 Version:	0.9.5
 Release:	1
@@ -18,9 +18,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 C2html highlights C-language sources like emacs does. Output is in
 HTML format. Also works as CGI to convert files on the fly.
 
-%description -l pl
-C2html pod∂wietla sk≥adniÍ ºrÛde≥ C podobnie jak emacs. Wyj∂cie jest
-w formacie HTML. Dzia≥a takøe jako CGI konwertuj±c pliki w locie.
+%description -l pl.UTF-8
+C2html pod≈õwietla sk≈Çadniƒô ≈∫r√≥de≈Ç C podobnie jak emacs. Wyj≈õcie jest
+w formacie HTML. Dzia≈Ça tak≈ºe jako CGI konwertujƒÖc pliki w locie.
 
 %prep
 %setup -q
